@@ -12,22 +12,11 @@ function anagrams(stringA, stringB) {
   if (stringA.length !== stringA.length) {
     return false;
   }
-  stringA = stringA.replace(/[^\w]/g, '').toLowerCase();
-  stringB = stringB.replace(/[^\w]/g, '').toLowerCase();
-  let charA = [...stringA];
-  let charB = [...stringB];
-  charA.sort();
-  charB.sort();
-  let index = 0;
-  while (index < charA.length) {
-    if (charA[index] !== charB[index]) {
-      return false;
-    }
-    index++;
-  }
-  return true;
+  return cleanString(stringA) === cleanString(stringB);
 }
-
+function cleanString(string) {
+  return string.replace(/[^\w]/g, "").split("").sort().join("");
+}
 module.exports = anagrams;
 
 // function anagrams(stringA, stringB) {
